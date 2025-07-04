@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Replace default title with custom product name -->
+    <template id="web.layout" inherit_id="web.layout">
+        <xpath expr="//title" position="replace">
+            <title t-esc="title or 'cdx'"/>
+        </xpath>
+    </template>
+
+    <!-- Replace Powered by message and logo -->
+    <template id="brand_promotion_message" inherit_id="web.brand_promotion_message">
+        <xpath expr="//img[@src='/web/static/img/odoo_logo_tiny.png']" position="replace">
+            <img src="/cdx_rebranding/static/src/img/odoo_logo_tiny.png" alt="cdx" width="62" height="20" style="width: auto; height: 1em; vertical-align: baseline;"/>
+        </xpath>
+        <xpath expr="//t[@t-set='final_message']" position="replace">
+            <t t-set="final_message">Powered by %s%s</t>
+        </xpath>
+    </template>
+
+    <!-- Login footer -->
+    <template id="login_footer" inherit_id="web.login_layout">
+        <xpath expr="//a[contains(@href, 'https://www.odoo.com')]/span" position="replace">
+            <span>cdx</span>
+        </xpath>
+    </template>
+</odoo>
