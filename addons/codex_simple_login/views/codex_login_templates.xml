@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Override the default login template -->
+    <template id="web.login" name="Login">
+        <t t-call="web.frontend_layout">
+            <t t-set="no_header" t-value="True"/>
+            <t t-set="no_footer" t-value="True"/>
+            <t t-set="body_classname" t-value="'o_codex_login_body'"/>
+            <div class="o_codex_login_container">
+                <img src="/codex_simple_login/static/src/img/codex_logo.png" alt="Codex Logo"/>
+                <form class="oe_login_form" role="form" t-attf-action="/web/login" method="post" onsubmit="this.action = '/web/login' + location.hash">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <input type="text" name="login" placeholder="Username" required="required" class="form-control" autocomplete="username"/>
+                    <input type="password" name="password" placeholder="Password" required="required" class="form-control" autocomplete="current-password"/>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <input type="hidden" name="redirect" t-att-value="redirect"/>
+                </form>
+            </div>
+        </t>
+    </template>
+</odoo>
