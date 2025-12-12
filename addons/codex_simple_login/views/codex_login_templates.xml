@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Override login layout to display the Codex logo -->
+    <template id="web.login_layout" inherit_id="web.login_layout">
+        <xpath expr="//div[contains(@class,'border-bottom')]/img" position="replace">
+            <img src="/codex_simple_login/static/src/img/codex_logo.png" alt="Codex Logo" style="max-height:120px; max-width:100%; width:auto"/>
+        </xpath>
+        <xpath expr="//t[@t-set='body_classname']" position="replace">
+            <t t-set="body_classname" t-value="'o_codex_login_body'"/>
+        </xpath>
+        <xpath expr="//a[@href='/web/database/manager']" position="replace"/>
+    </template>
+
+    <!-- Simplify the default login form -->
+    <template id="web.login" inherit_id="web.login" name="Login">
+        <xpath expr="//div[@class='mb-3' and .//label[@for='db']]" position="replace"/>
+        <xpath expr="//t[@t-if='debug']" position="replace"/>
+        <xpath expr="//p[@class='alert alert-danger']" position="replace"/>
+        <xpath expr="//p[@class='alert alert-success']" position="replace"/>
+        <xpath expr="//div[contains(@class,'oe_login_buttons')]/button" position="replace">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </xpath>
+    </template>
+</odoo>

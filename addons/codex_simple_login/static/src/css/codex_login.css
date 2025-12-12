@@ -1,0 +1,13 @@
+.o_codex_login_container {
+    max-width: 320px;
+    margin: 5% auto;
+    text-align: center;
+}
+.o_codex_login_container img {
+    max-width: 100%;
+    margin-bottom: 1rem;
+}
+.o_codex_login_container form {
+    display: grid;
+    gap: 0.5rem;
+}
